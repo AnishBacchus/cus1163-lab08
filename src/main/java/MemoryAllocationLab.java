@@ -34,6 +34,7 @@ public class MemoryAllocationLab {
         try(BufferedReader br = new BufferedReader(new FileReader(filename))){
 		String line = br.readLine();
 		totalMemory = Integer.parseInt(line);
+		System.out.println("Total Memory: " + totalMemory + " KB");		
 
 		MemoryBlock memoryBlock = new MemoryBlock(0, totalMemory, null);
 		memory.add(memoryBlock);
@@ -42,7 +43,7 @@ public class MemoryAllocationLab {
 			String[] s = line.split(" ");
 		
 		if(s[0].equals("REQUEST")){
-			allocate(s[1], Integer.parseInt(s[3]));	
+			allocate(s[1], Integer.parseInt(s[2]));	
 		}else if (s[0].equals("RELEASE")){
 			deallocate(s[1]);		
 			}
@@ -67,14 +68,14 @@ public class MemoryAllocationLab {
 		MemoryBlock extraBlock = new MemoryBlock(start, newSize, null);
 
 		int indexOfBlock = memory.indexOf(m);
-		memory.add(indexOfBlock, extraBlock);
+		memory.add(indexOfBlock + 1, extraBlock);
 		}
 
 	    m.size = size;
 	    m.processName = processName;
 	 
 	    successfulAllocations++;
-	    System.out.println("SUCCESS");
+	    System.out.println(processName + " " +  size + " KB ->  SUCCESS");
 	    return;
 
 	  }
