@@ -43,7 +43,7 @@ public class MemoryAllocationLab {
 		
 		if(s[0].equals("REQUEST")){
 			allocate(s[1], Integer.parseInt(s[3]));	
-		}else if (s[0].equals("RELEASE"){
+		}else if (s[0].equals("RELEASE")){
 			deallocate(s[1]);		
 			}
 		}
@@ -66,13 +66,14 @@ public class MemoryAllocationLab {
 		int newSize = m.size - size; 
 		MemoryBlock extraBlock = new MemoryBlock(start, newSize, null);
 
-		int indexOfBlock + 1, extraBlock);
+		int indexOfBlock = memory.indexOf(m);
+		memory.add(indexOfBlock, extraBlock);
 		}
 
 	    m.size = size;
 	    m.processName = processName;
 	 
-	    sucessfulAllocations++;
+	    successfulAllocations++;
 	    System.out.println("SUCCESS");
 	    return;
 
